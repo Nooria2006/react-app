@@ -1,8 +1,22 @@
+
 import "./sidebar.css";
 
-function Sidebar() {
+function Sidebar({
+  sidebarOpen,
+  setSidebarOpen,
+  setCurrentPage,
+}) {
+  // وقتی روی یک صفحه کلیک می‌کنیم
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
   return (
-    <aside className="sidebar">
+    <aside
+      className={`sidebar ${
+        sidebarOpen ? "open" : "closed"
+      }`}
+    >
 
       {/* Logo */}
       <div className="logo">
@@ -21,57 +35,126 @@ function Sidebar() {
       {/* Navigation */}
       <nav>
 
-        <a href="#" className="active">
+        {/* Dashboard */}
+        <a
+          href="#"
+          className="active"
+          onClick={(e) => {
+            e.preventDefault();
+            handlePageChange("dashboard");
+          }}
+        >
           🏠
           <span>Dashboard</span>
         </a>
+<a
+  href="#"
+  onClick={(e) => {
+    e.preventDefault();
+    handlePageChange("findBook");
+  }}
+>
+  🔍
+  <span>Find Book</span>
+</a>
 
-        <a href="#">
-          🔍
-          <span>Find Book</span>
-        </a>
+      <a
+  href="#"
+  onClick={(e) => {
+    e.preventDefault();
+    handlePageChange("findLibrary");
+  }}
+>
+  🏢
+  <span>Find Library</span>
+</a> 
 
-        <a href="#">
-          🏢
-          <span>Find Library</span>
-        </a>
 
-        <a href="#">
+        {/* All Books */}
+        <a
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            handlePageChange("books");
+          }}
+        >
           📚
           <span>All Books</span>
         </a>
+<a
+  href="#"
+  onClick={(e) => {
+    e.preventDefault();
+    handlePageChange("categories");
+  }}
+>
+  🗂️
+  <span>Categories</span>
+</a>
+<a
+  href="#"
+  onClick={(e) => {
+    e.preventDefault();
+    handlePageChange("members");
+  }}
+>
+  👥
+  <span>Members</span>
+</a>
 
-        <a href="#">
-          🗂️
-          <span>Categories</span>
-        </a>
 
-        <a href="#">
-          👥
-          <span>Members</span>
-        </a>
+{/* Borrowed Books */}
+<a
+  href="#"
+  onClick={(e) => {
+    e.preventDefault();
+    handlePageChange("borrowed");
+  }}
+>
+  📖
+  <span>Borrowed Books</span>
+</a>
+<a
+  href="#"
+  onClick={(e) => {
+    e.preventDefault();
+    handlePageChange("due");
+  }}
+>
+  🕐
+  <span>Due Books</span>
+</a>
+        
 
-        <a href="#">
-          📖
-          <span>Borrowed Books</span>
-        </a>
 
-        <a href="#">
-          🕐
-          <span>Due Books</span>
-        </a>
-
-        <a href="#">
+        {/* Favorite Books */}
+        <a
+          href="#"
+          onClick={(e) => e.preventDefault()}
+        >
           ❤️
           <span>Favorite Books</span>
         </a>
 
-        <a href="#">
+
+        {/* My Account */}
+        <a
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            handlePageChange("account");
+          }}
+        >
           👤
           <span>My Account</span>
         </a>
 
-        <a href="#">
+
+        {/* Settings */}
+        <a
+          href="#"
+          onClick={(e) => e.preventDefault()}
+        >
           ⚙️
           <span>Settings</span>
         </a>

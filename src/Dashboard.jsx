@@ -1,6 +1,11 @@
 import "./dashboard.css";
 
-function Dashboard() {
+function Dashboard({
+  toggleSidebar,
+  sidebarOpen,
+  setCurrentPage
+}){
+
   const categories = [
     { name: "📘 Fiction", percentage: 35 },
     { name: "📗 Science", percentage: 20 },
@@ -48,26 +53,32 @@ function Dashboard() {
   ];
 
   return (
-    <main className="main">
+    <main
+      className={`main ${
+        sidebarOpen ? "sidebar-open" : "sidebar-closed"
+      }`}
+    >
 
-      {/* Header */}
+      {/* ================= HEADER ================= */}
+
       <header className="dashboard-header">
 
         <div className="header-left">
 
-          <button className="menu-button">
+          <button
+            className="menu-button"
+            onClick={toggleSidebar}
+          >
             ☰
           </button>
 
           <div>
-            <small>
-              🏠 / Dashboard
-            </small>
-
+            <small>🏠 / Dashboard</small>
             <h3>Dashboard</h3>
           </div>
 
         </div>
+
 
         <div className="header-right">
 
@@ -80,9 +91,12 @@ function Dashboard() {
             />
           </div>
 
-          <span className="account">
-            👤 My Account
-          </span>
+          <button
+  className="account"
+  onClick={() => setCurrentPage("account")}
+>
+  👤 My Account
+</button>
 
           <span className="notification">
             🔔
@@ -93,16 +107,22 @@ function Dashboard() {
       </header>
 
 
-      {/* Main Content */}
+      {/* ================= CONTENT ================= */}
+
       <section className="content">
 
-        <h1>Welcome To My Library! 📚</h1>
+        <h1>
+          Welcome To My Library! 📚
+        </h1>
 
 
-        {/* Find Book */}
+        {/* FIND BOOK */}
+
         <div className="find-section">
 
-          <h2>Find a Book 🔍</h2>
+          <h2>
+            Find a Book 🔍
+          </h2>
 
           <p>
             Search for your favorite book.
@@ -124,14 +144,18 @@ function Dashboard() {
         </div>
 
 
-        {/* Dashboard Cards */}
+        {/* ================= CARDS ================= */}
+
         <div className="cards">
 
 
-          {/* Books by Category */}
+          {/* CATEGORY */}
+
           <div className="card">
 
-            <h3>Books by Category</h3>
+            <h3>
+              Books by Category
+            </h3>
 
             <div className="chart-row">
 
@@ -143,10 +167,13 @@ function Dashboard() {
 
                 {categories.map((category) => (
                   <p key={category.name}>
+
                     {category.name}
+
                     <span>
                       {category.percentage}%
                     </span>
+
                   </p>
                 ))}
 
@@ -161,20 +188,25 @@ function Dashboard() {
           </div>
 
 
-          {/* Popular Books */}
+          {/* POPULAR BOOKS */}
+
           <div className="card">
 
-            <h3>Popular Books</h3>
+            <h3>
+              Popular Books
+            </h3>
 
             <div className="book-list">
 
               {popularBooks.map((book) => (
                 <p key={book.name}>
+
                   {book.name}
 
                   <span>
                     {book.percentage}%
                   </span>
+
                 </p>
               ))}
 
@@ -187,10 +219,13 @@ function Dashboard() {
           </div>
 
 
-          {/* Library Usage */}
+          {/* LIBRARY USAGE */}
+
           <div className="card">
 
-            <h3>Library Usage</h3>
+            <h3>
+              Library Usage
+            </h3>
 
             <div className="chart-row">
 
@@ -202,11 +237,13 @@ function Dashboard() {
 
                 {usage.map((item) => (
                   <p key={item.name}>
+
                     {item.name}
 
                     <span>
                       {item.percentage}%
                     </span>
+
                   </p>
                 ))}
 
@@ -221,10 +258,13 @@ function Dashboard() {
           </div>
 
 
-          {/* Reading Statistics */}
+          {/* READING STATISTICS */}
+
           <div className="card reading">
 
-            <h3>Reading Statistics</h3>
+            <h3>
+              Reading Statistics
+            </h3>
 
             <h2>
               72%
@@ -232,12 +272,12 @@ function Dashboard() {
               <span>
                 +8%
               </span>
+
             </h2>
 
             <p className="subtitle">
               Your reading progress this month
             </p>
-
 
             <div className="line-chart">
 
@@ -271,7 +311,8 @@ function Dashboard() {
         </div>
 
 
-        {/* Recently Added Books */}
+        {/* ================= RECENT BOOKS ================= */}
+
         <div className="books-section">
 
           <h2>
@@ -281,6 +322,7 @@ function Dashboard() {
           <div className="books">
 
             {recentBooks.map((book) => (
+
               <div
                 className="book"
                 key={book.title}
@@ -299,6 +341,7 @@ function Dashboard() {
                 </p>
 
               </div>
+
             ))}
 
           </div>
@@ -308,7 +351,8 @@ function Dashboard() {
       </section>
 
 
-      {/* Footer */}
+      {/* ================= FOOTER ================= */}
+
       <footer className="footer">
 
         <p>
