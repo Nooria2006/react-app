@@ -124,17 +124,18 @@ function Sidebar({
   🕐
   <span>Due Books</span>
 </a>
-        
+    <a
+  href="#"
+  onClick={(e) => {
+    e.preventDefault();
+    handlePageChange("favorite");
+  }}
+>
+  ❤️
+  <span>favorite Book</span>
+</a>    
 
 
-        {/* Favorite Books */}
-        <a
-          href="#"
-          onClick={(e) => e.preventDefault()}
-        >
-          ❤️
-          <span>Favorite Books</span>
-        </a>
 
 
         {/* My Account */}
@@ -149,15 +150,17 @@ function Sidebar({
           <span>My Account</span>
         </a>
 
-
-        {/* Settings */}
-        <a
-          href="#"
-          onClick={(e) => e.preventDefault()}
-        >
-          ⚙️
-          <span>Settings</span>
-        </a>
+<a
+  href="#"
+  onClick={(e) => {
+    e.preventDefault();
+    handlePageChange("settings");
+  }}
+>
+  ⚙️
+  <span>Settings</span>
+</a>
+   
 
       </nav>
 

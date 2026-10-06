@@ -10,8 +10,10 @@ import DueBook from "./DueBook";
 import FindBook from "./findBook";
 import FindLibrary from "./findLibrary";
 import Categories from "./categories";
-
+import  FavoriteBook from "./favoriteBook";
 import Members from "./members";
+import Setting from "./Setting";
+
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -75,6 +77,18 @@ function App() {
 {currentPage === "members" && (
   <Members />
 )}
+{currentPage === "members" && (
+  <Members />
+)}
+
+{currentPage === "favorite" && (
+  <FavoriteBook />
+)}
+
+{currentPage === "settings" && (
+  <Setting />
+)}
+
 
       </main>
 
